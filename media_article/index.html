@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Slider for mobile</title>
+  <style>
+      html, body{ margin: 0; }
+        h1{ text-align: center; }
+        .album{
+        height: 300px;
+        width: 100%;
+        overflow: hidden;
+        }
+        .cards{
+        position: relative;
+        display: flex;
+        height: 300px;
+        transition: transform 0.5s;
+        }
+        .content{
+            min-width:100%;
+            max-height:250px;
+            overflow: hidden;
+        }
+        img {width: 100%;}
+  </style>
+</head>
+<body>
+  <div>
+    <h1>SWIPE!</h1>
+    <div class="album">
+        <div class="cards">
+                <div class="content">
+                    <img src="/images/111.jpg">
+                </div>
+                <div class="content">
+                    <img src="/images/222.jpg">
+                </div>
+                <div class="content">
+                    <img src="/images/333.jpg">
+                </div>
+                <div class="content">
+                    <img src="/images/444.jpg">
+                </div>
+        </div>
+    </div>
+    <div>
+        <h2>Sub Info</h2>
+   </div>
+  </div>
+  
+<script src="/js/media-article.js">
+  </script>
+</body>
+</html>
