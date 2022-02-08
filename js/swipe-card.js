@@ -4,7 +4,7 @@ class SwipeCard extends ComponentABS{
       super();
       if(content_data)
       this.content_data = content_data;
-      else this.content_data = this._get_initial_data();
+      else this.content_data =  this._get_initial_data();
 
       this.curPos = 0;
       this.postion = 0;
