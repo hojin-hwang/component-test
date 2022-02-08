@@ -8,50 +8,46 @@
   <style>
       html, body{ margin: 0; }
         h1{ text-align: center; }
-        .album{
-        height: 300px;
-        width: 100%;
-        overflow: hidden;
-        }
-        .cards{
-        position: relative;
-        display: flex;
-        height: 300px;
-        transition: transform 0.5s;
-        }
-        .content{
-            min-width:100%;
-            max-height:250px;
-            overflow: hidden;
-        }
-        img {width: 100%;}
+        
   </style>
 </head>
 <body>
   <div>
     <h1>SWIPE!</h1>
-    <div class="album">
-        <div class="cards">
-                <div class="content">
-                    <img src="/images/111.jpg">
-                </div>
-                <div class="content">
-                    <img src="/images/222.jpg">
-                </div>
-                <div class="content">
-                    <img src="/images/333.jpg">
-                </div>
-                <div class="content">
-                    <img src="/images/444.jpg">
-                </div>
-        </div>
-    </div>
-    <div>
-        <h2>Sub Info</h2>
-   </div>
+    <swipe-card></swipe-card>
+    <swipe-card></swipe-card>
+    
   </div>
-  
-<script src="/js/media-article.js">
-  </script>
+
+  <template id="swipe_card">
+    <style>
+      .card-container{
+      height: 300px;
+      width: 100%;
+      overflow: hidden;
+      }
+      .cards{
+      position: relative;
+      display: flex;
+      height: 300px;
+      transition: transform 0.5s;
+      }
+      .content-box{
+          min-width:100%;
+          max-height:250px;
+          overflow: hidden;
+      }
+      img {width: 100%;}
+    </style>
+    <article class="card-container">
+      <div class="cards">
+        
+      </div>
+    </div>
+  </template>
+
+<script src="/js/component-abs.js"></script>
+<script src="/js/swipe-card.js"></script>
 </body>
+
 </html>
