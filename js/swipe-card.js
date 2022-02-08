@@ -58,7 +58,8 @@ class SwipeCard extends ComponentABS{
         if(content.type === 'img')
         cards.appendChild(this._make_img_element(content));
         else if(content.type === 'mov'){}
-        else if(content.type === 'text'){}
+        else if(content.type === 'text')
+        cards.appendChild(this._make_text_element(content));
       });
 
       const shadowRoot = this.attachShadow({mode: 'open'});
@@ -71,14 +72,30 @@ class SwipeCard extends ComponentABS{
   _get_initial_data()
   {
       const init_content_data_list = [];
-      for(let i=1; i<5; i++)
-      {
-        const init_content_data = {};
-        init_content_data.type = 'img';
-        init_content_data.content = `\/images\/${i}${i}${i}.jpg`;
-        init_content_data.option = {};
-        init_content_data_list.push(init_content_data);
-      }
+      let temp_content_data = {};
+      temp_content_data.type = 'img';
+      temp_content_data.content = `\/images\/111.jpg`;
+      temp_content_data.option = {};
+      init_content_data_list.push(temp_content_data);
+      
+      temp_content_data = {};
+      temp_content_data.type = 'text';
+      temp_content_data.content = `이번엔 기필고 승리하리라!!`;
+      temp_content_data.option = {'color':'white', 'background':'darkgray', 'fontSize':'28px'};
+      init_content_data_list.push(temp_content_data);
+
+      temp_content_data = {};
+      temp_content_data.type = 'img';
+      temp_content_data.content = `\/images\/222.jpg`;
+      temp_content_data.option = {};
+      init_content_data_list.push(temp_content_data);
+
+      temp_content_data = {};
+      temp_content_data.type = 'text';
+      temp_content_data.content = `장수는 나가서 이름을 떨치고 정승은 앉아서 이름을 알린다.`;
+      temp_content_data.option = {'color':'white', 'background':'darkolivegreen','fontSize':'22px'};
+      init_content_data_list.push(temp_content_data);
+
       return init_content_data_list;
   }
 
@@ -89,6 +106,26 @@ class SwipeCard extends ComponentABS{
     const img = document.createElement('img');
     img.src = content.content;
     content_box.appendChild(img);
+
+    return content_box;
+  }
+
+  _make_text_element(content)
+  {
+    const content_box = document.createElement('div');
+    content_box.classList.add('content-box');
+    const text = document.createElement('p');
+    text.innerText = content.content;
+    content_box.style.background = content.option.background;
+    content_box.style.display = 'flex';
+    content_box.style.alignItems = 'center';
+    content_box.style.justifyContent = 'center';
+    content_box.style.fontSize = content.option.fontSize;
+    content_box.style.textAlign = 'center';
+    text.style.margin = '24px 12px'
+
+    text.style.color = content.option.color;
+    content_box.appendChild(text);
 
     return content_box;
   }
