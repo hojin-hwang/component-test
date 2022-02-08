@@ -13,7 +13,6 @@
   <div>
     <h1>SWIPE!</h1>
     <swipe-card></swipe-card>
-    <swipe-card></swipe-card>
   </div>
 
   <template id="swipe_card">
@@ -22,6 +21,7 @@
       height: 300px;
       width: 100%;
       overflow: hidden;
+      touch-action: pan-y;
       }
       .cards{
       position: relative;
@@ -35,12 +35,27 @@
           overflow: hidden;
       }
       img {width: 100%;}
+      .nav-btn{
+        background: white;
+        color:black;
+        height:300px;
+      }
+      .next-btn{
+        position: absolute;
+        right:0;
+        top: 100px;
+        width: 60px;
+        height: 60px;
+        
+      }
+      .nav-btn.active{display:block}
     </style>
     <article class="card-container">
       <div class="cards">
-        
+        <span class="nav-btn next-btn">-></span>
       </div>
     </div>
+    
   </template>
 
 <script src="/js/component-abs.js"></script>

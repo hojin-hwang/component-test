@@ -16,6 +16,7 @@ class SwipeCard extends ComponentABS{
       this.addEventListener('touchstart', this._touch_start,  {passive: true});
       this.addEventListener('touchend', this._touch_end,  {passive: true});
       this.addEventListener('touchmove', this._touch_move,  {passive: true});
+
   }
   static get observedAttributes() {return ['any_attribute']; }
 
@@ -114,37 +115,37 @@ class SwipeCard extends ComponentABS{
   {
     const content_box = document.createElement('div');
     content_box.classList.add('content-box');
-    const text = document.createElement('p');
-    text.innerText = content.content;
     content_box.style.background = content.option.background;
+    content_box.style.fontSize = content.option.fontSize;
     content_box.style.display = 'flex';
     content_box.style.alignItems = 'center';
     content_box.style.justifyContent = 'center';
-    content_box.style.fontSize = content.option.fontSize;
     content_box.style.textAlign = 'center';
-    text.style.margin = '24px 12px'
 
+    const text = document.createElement('p');
+    text.innerText = content.content;
+    text.style.margin = '24px 12px';
     text.style.color = content.option.color;
+    
     content_box.appendChild(text);
 
     return content_box;
   }
 
   _touch_start(event) {
-      //event.preventDefault();
       this.start_x = event.touches[0].pageX;
   }
  
   _touch_end(event) {
-    //event.preventDefault();
     this.end_x = event.changedTouches[0].pageX;
-    
-    if(this.start_x > this.end_x){
+    if(this.start_x > this.end_x)
+    {
       this._next();
-    }else{
-      this._prev();
     }
-    
+    else
+    {
+      this._prev();
+    }  
   }
 
   _touch_move(event)
@@ -161,6 +162,7 @@ class SwipeCard extends ComponentABS{
       }
   }  
 
+  
   _prev()
   {
     if(this.curPos > 0){
@@ -181,8 +183,6 @@ class SwipeCard extends ComponentABS{
 }
 customElements.define('swipe-card', SwipeCard);
 
-
-// const CARD_WIDTH = window.screen.width;
 
 
 
