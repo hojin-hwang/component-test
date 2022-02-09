@@ -8,7 +8,7 @@ class KakaoMap extends ComponentABS{
       this.last_custom_overlay;
 
   }
-  static get observedAttributes() {return ['any_attribute']; }
+  static get observedAttributes() {return ['draggable']; }
 
   handleClick(e) {
       e.composedPath().find((node) => 
@@ -40,6 +40,7 @@ class KakaoMap extends ComponentABS{
   
   attributeChangedCallback(name, oldValue, newValue) {
       console.log('Swipe Card element attributes changed.'); 
+      this.map_data.config.draggable = newValue
   }
 
   _render(map_data = null)

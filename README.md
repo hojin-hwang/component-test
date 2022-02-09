@@ -8,16 +8,20 @@
 
 - kakao-map.js : '\<kakao-map> \</kakao-map>'
     - kakao api key : https://apis.map.kakao.com/web/guide/ 참고
-        - index.html 와 같은 폴더에 'config.json' file을 만든다.
+        - media_article 폴더 아래에 'config.json' file을 만든다.
         - config.json file 내용에 kakaoData='{"key":"카카오 API Key 값"}' 을 쓰고 저장한다.
         - parameter
         ```json
-            map_data = { 
-          "latlng" : {"lat":"33.450701", "lng":"126.570667"}, //위도 경도
-          "config" : {
-            "draggable": false, //지도크기 변경, 이동 가능여부
-            "level": 2 //지도 확대 (낮을수록 자세히..)
-          },
-          "use_marker":true, //마커표시 여부
-        };
+          { 
+            "latlng" : {"lat":"33.450701", "lng":"126.570667"}, //위도 경도
+            "config" : {
+                "draggable": false, //지도크기 변경, 이동 가능여부
+                "level": 2 //지도 확대 (낮을수록 자세히..)
+            },
+            "use_marker":true, //마커표시 여부
+          }
         ```
+        - attribute : draggable = "false or true"
+            ```html
+                <kakao-map draggable="true"></kakao-map>
+            ```

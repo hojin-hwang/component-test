@@ -93,7 +93,7 @@
           </div>
         </summary>
         <article class="info-body">
-          <kakao-map>
+          <kakao-map draggable="true">
             <template id="kakao_map">
               <div class="map" style="width:500px;height:400px;"></div>
             </template>  
@@ -146,9 +146,17 @@
   document.write("<script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey="+kakao_data.key+"&libraries=drawing,services'><\/script>");
   document.addEventListener('DOMContentLoaded', () => 
   {
-    return;
+    const thumb_images = document.querySelectorAll('.title-img');
+    const images = ['/images/111.jpg', '/images/222.jpg','/images/333.jpg','/images/444.jpg','/images/555.jpg','/images/666.jpg']
+    thumb_images?.forEach(item=>{
+      item.src = shuffle_and_get_one(images);
+    });
+
   });
-		
+  function shuffle_and_get_one(array) { 
+    array.sort(() => Math.random() - 0.5); 
+    return array[0];
+  }		
 </script>
 
 <script src="/js/component-abs.js"></script>
