@@ -8,7 +8,7 @@ class KakaoMap extends ComponentABS{
       this.last_custom_overlay;
 
   }
-  static get observedAttributes() {return ['draggable']; }
+  static get observedAttributes() {return ['draggable', 'lat', 'lng']; }
 
   handleClick(e) {
       e.composedPath().find((node) => 
@@ -39,8 +39,10 @@ class KakaoMap extends ComponentABS{
   }
   
   attributeChangedCallback(name, oldValue, newValue) {
-      console.log('Swipe Card element attributes changed.'); 
-      this.map_data.config.draggable = newValue
+      console.log('Swipe Card element attributes changed.');
+      if(name == 'draggable') this.map_data.config.draggable = newValue;
+      else if(name == 'lat') this.map_data.latlng.lat = newValue;
+      else if(name == 'lng') this.map_data.latlng.lng = newValue;
   }
 
   _render(map_data = null)
@@ -93,6 +95,7 @@ class KakaoMap extends ComponentABS{
   _use_location_info(mouseEvent)
   {
     const latlng = mouseEvent.latLng;
+    console.log(latlng)
     const geocoder = new kakao.maps.services.Geocoder();
     const coord = new kakao.maps.LatLng(latlng.getLat(), latlng.getLng());
     const callback = function(result, status) {

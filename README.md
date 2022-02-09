@@ -24,7 +24,7 @@
             "use_marker":true, //마커표시 여부
           }
         ```
-        - attribute : draggable = "false or true"
+        - attribute : draggable, lat, lng
             ```html
-                <kakao-map draggable="true"></kakao-map>
+                <kakao-map draggable="true" lat="35.118196", lng="129.105920" ></kakao-map>
             ```
