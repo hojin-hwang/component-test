@@ -93,11 +93,7 @@
           </div>
         </summary>
         <article class="info-body">
-          <kakao-map draggable="true">
-            <template id="kakao_map">
-              <div class="map" style="width:500px;height:400px;"></div>
-            </template>  
-          </kakao-map>
+          <kakao-map draggable="true"></kakao-map>        
         </article>
       </details>      
     </article>
@@ -127,13 +123,12 @@
       img {width: 100%;}
     </style>
     <article class="card-container">
-      <div class="cards">
-      </div>
+      <div class="cards"></div>
     </div>
   </template>
 
   <template id="kakao_map">
-    <div class="map" style="width:500px;height:400px;"></div>
+    <div class="map" style="width:100%;height:300px;"></div>
   </template>  
 
 <script src="config.json" type="text/javascript">

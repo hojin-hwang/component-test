@@ -1,5 +1,8 @@
 # component-test
 - use Live Server Extenstion in VSCODE for testing
+- 127.0.0.1:5500 -> localhost:5500 으로 변경(kakao map Api 등록때문에..)
+- 모바일 화면으로 확인해주세요.
+
 ## media_article
 - swip-card.js : '\<swip-card> \</swip-card>' or instance of SwipeCard();
     - touch event for Only Mobile

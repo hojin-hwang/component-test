@@ -1,100 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>edit-word demo</title>
-    <script src="/js/in-html-card.js" defer></script>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>  
   <body>
-    <h1><code>edit-word</code> demo</h1>
+    <h1><code>Component Test</code></h1>
+    <ul>
+        <li>모바일 화면에서 테스트 해주세요</li>
+        <li>localhost:5500 으로 실행해주세요</li>
+    </ul>
+    <hr>
+    <ol>
+        <li>
+            <p>Swipe cards and Kakao Map</p>
+            <ul>
+                <li>이미지, 텍스트 카드들을 Swipe 할 수 있는 모듈</li>
+                <li>GitHub : https://github.com/hojin-hwang/component-test/tree/main/media_article</li>
+                <li><a href="/media_article/index.html">예제보기</a></li>
+            </ul>
+        </li>
+    </ol>
 
-    <person-details>
-        <template id="person-template">
-            <style>
-                ::slotted(span){color:green}
-                ::slotted(p){color:red}
-            </style>
-            <div>
-              <h2>Personal ID Card</h2>
-              <slot name="person-name">NAME MISSING</slot>
-              <ul>
-                <li><slot name="person-age">AGE MISSING</slot></li>
-                <li><slot name="person-occupation">OCCUPATION MISSING</slot></li>
-              </ul>
-            </div>
-          </template>
-
-      <p slot="person-name"><edit-word>Morgan</edit-word> Stanley</p>
-      <span slot="person-age">36</span>
-      <span slot="person-occupation">Accountant</span>
-    </person-details>
-
-    <p>My name is <edit-word>Chris</edit-word>, the man said.</p>
-
-    <html-in-component>
-        <template id="test">
-        <section>
-             <p>html in component</p>
-        </section>    
-        </template>
-    </html-in-component>
-
-    <section>
-        <article style="border: 1px solid #eee;">
-            <img  src="/images/111.jpg" style="height:200px; width: 100%;">
-            <p>this is 111.jpg</p>
-        </article>
-        <article style="border: 1px solid #eee;">
-            <img  src="/images/222.jpg" style="height:200px; width: 100%;">
-            <p>this is 222.jpg</p>
-        </article>
-        <article style="border: 1px solid #eee;">
-            <img  src="/images/333.jpg" style="height:200px; width: 100%;">
-            <p>this is 333.jpg</p>
-        </article>
-        <article style="border: 1px solid #eee;">
-            <img class="get_bounding_rect" data-src="/images/444.jpg" style="height:200px; width: 100%;">
-            <p>this is 444.jpg</p>
-        </article>
-        <article style="border: 1px solid #eee;">
-            <img class="get_bounding_rect" data-src="/images/555.jpg" style="height:200px; width: 100%;">
-            <p>this is 555.jpg</p>
-        </article>
-    </section>
+    
   </body>
 
   <script>
-      let imgList1 = [...document.querySelectorAll(".get_bounding_rect")]
-      let num = imgList1.length;
-
-      let lazyLoad1 = (function () {
-        let count = 0
-        return function () {
-            let deleteIndexList = [];
-            imgList1.forEach((img,index) => {
-                let rect = img.getBoundingClientRect();
-                
-                if (rect.top < window.innerHeight) {
-                    
-                    img.src = img.dataset.src
-                    // Add picture to delete list after loading successfully
-                    deleteIndexList.push(index)
-                    count++
-                    if (count === num) {
-                        //When all pictures are loaded, unbind scroll event
-                        document.removeEventListener('scroll',lazyLoad1);
-                        
-                    }
-                }
-            })
-            // Delete loaded pictures
-            imgList1 = imgList1.filter((_,index)=>!deleteIndexList.includes(index));
-        }
-    })();
-
-
-    window.addEventListener('scroll',lazyLoad1);
-
+      
 
   </script>
 </html>

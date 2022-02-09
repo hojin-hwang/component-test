@@ -97,7 +97,16 @@ class KakaoMap extends ComponentABS{
     const coord = new kakao.maps.LatLng(latlng.getLat(), latlng.getLng());
     const callback = function(result, status) {
         if (status === kakao.maps.services.Status.OK) {
-            console.log(result[0].address.address_name);
+            if(result[0].road_address)
+            {
+                console.log('도로명 주소');
+                console.log(result[0].road_address.address_name);
+            }
+            else
+            {
+                console.log('일반주소 주소');
+                console.log(result[0].address.address_name);
+            }
         }
     };
     geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
