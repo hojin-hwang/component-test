@@ -79,7 +79,7 @@ class KakaoMap extends ComponentABS{
   _get_initial_data()
   {
     const map_data = { 
-          "latlng" : {'lat':'33.450701', 'lng':'126.570667'},
+          "latlng" : {"lat":"33.450701", 'lng':"126.570667"},
           "config" : {
             "draggable": false,
             "level": 2
