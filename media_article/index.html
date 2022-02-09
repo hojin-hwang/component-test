@@ -3,22 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <title>Slider for mobile</title>
   <style>
-      html, body{ margin: 0; }
+      html, body{ margin: 0 0 30px 0; }
+
+      article.media-article{
+        display: flex;
+        flex-direction: column;
+        margin-bottom:24px;
+      }
+      .info-area{
+        display: flex;
+        flex-direction: column;
+      }
+      .info-title
+      {
+        padding:24px 18px;
+        display: flex;
+        justify-content: start;
+        gap : 12px;
+      }
+      details > summary {list-style: none; }
+      details > summary::marker{display: none!important;}
+
+      img.title-img{
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+      }
+      .title-text{
+        display: flex;
+        flex-direction: column;
+        gap : 4px;
+        width: 100%;
+        justify-content: center;
+      }
+      .title-text > span:nth-child(1)
+      {
+        font-size: 28px;
+      }
+      .title-text > span:nth-child(2)
+      {
+        font-size: 18px; color:gray
+      }
+      .title-tail{
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        color:green;
+      }
+      .title-tail > span:nth-child(1){font-size: 36px;}
   </style>
 </head>
 <body>
   <div>
     <h1>SWIPE!</h1>
-    <swipe-card></swipe-card>
+    <article class="media-article">
+      <swipe-card></swipe-card>
+      <details class="info-area">
+        <summary class="info-title">
+          <img class="title-img" src="/images/666.jpg" />
+          <div class="title-text">
+            <span class="master-title">Master title</span>
+            <span class="sub-title">Sub title</span>
+          </div>
+          <div class="title-tail">
+            <span class="material-icons">location_on</span>
+          </div>
+        </summary>
+        <article class="info-body">
+          <kakao-map></kakao-map>
+        </article>
+      </details>      
+    </article>
+
+
+    <article class="media-article">
+      <swipe-card></swipe-card>
+      <details class="info-area">
+        <summary class="info-title">
+          <img class="title-img" src="/images/666.jpg" />
+          <div class="title-text">
+            <span class="master-title">Master title</span>
+            <span class="sub-title">Sub title</span>
+          </div>
+          <div class="title-tail">
+            <span class="material-icons">location_on</span>
+          </div>
+        </summary>
+        <article class="info-body">
+          <kakao-map>
+            <template id="kakao_map">
+              <div class="map" style="width:500px;height:400px;"></div>
+            </template>  
+          </kakao-map>
+        </article>
+      </details>      
+    </article>
+
+  
   </div>
 
   <template id="swipe_card">
     <style>
       .card-container{
-      height: 300px;
+      height: 100%;
       width: 100%;
       overflow: hidden;
       touch-action: pan-y;
@@ -26,7 +116,7 @@
       .cards{
       position: relative;
       display: flex;
-      height: 300px;
+      height: 100%;
       transition: transform 0.5s;
       }
       .content-box{
@@ -35,31 +125,35 @@
           overflow: hidden;
       }
       img {width: 100%;}
-      .nav-btn{
-        background: white;
-        color:black;
-        height:300px;
-      }
-      .next-btn{
-        position: absolute;
-        right:0;
-        top: 100px;
-        width: 60px;
-        height: 60px;
-        
-      }
-      .nav-btn.active{display:block}
     </style>
     <article class="card-container">
       <div class="cards">
-        <span class="nav-btn next-btn">-></span>
       </div>
     </div>
-    
   </template>
+
+  <template id="kakao_map">
+    <div class="map" style="width:500px;height:400px;"></div>
+  </template>  
+
+<script src="config.json" type="text/javascript">
+  // kakaoData='{"key":"kakao app key"}'
+  //kakao key값은 https://apis.map.kakao.com/web/guide/ 참고하여 만들기
+</script>
+
+<script>
+  const kakao_data = JSON.parse(kakaoData); 
+  document.write("<script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey="+kakao_data.key+"&libraries=drawing,services'><\/script>");
+  document.addEventListener('DOMContentLoaded', () => 
+  {
+    return;
+  });
+		
+</script>
 
 <script src="/js/component-abs.js"></script>
 <script src="/js/swipe-card.js"></script>
+<script src="/js/kakao-map.js"></script>
 </body>
 
 </html>

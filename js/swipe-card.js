@@ -2,10 +2,11 @@ class SwipeCard extends ComponentABS{
   constructor(content_data = null)
   {
       super();
+
       if(content_data)
       this.content_data = content_data;
       else this.content_data =  this._get_initial_data();
-
+      
       this.curPos = 0;
       this.postion = 0;
       this.start_x, this.end_x;
@@ -54,7 +55,8 @@ class SwipeCard extends ComponentABS{
   _render(content_data = null)
   {
       const template = document.querySelector('template#swipe_card');
-      const cards = template.content.querySelector('.cards');     
+      const cards = template.content.querySelector('.cards');   
+      
       content_data.forEach(content => {
         if(content.type === 'img')
         cards.appendChild(this._make_img_element(content));
@@ -67,28 +69,27 @@ class SwipeCard extends ComponentABS{
       shadowRoot.appendChild(template.content.cloneNode(true));
       this.cards = this.shadowRoot.querySelector('.cards');
       this.contents_count = this.cards.childElementCount;
-      
+      cards.innerHTML = '';
   }
 
   _get_initial_data()
   {
       const init_content_data_list = [];
+
+      //random image
+      for(let i = 1; i<7; i++)
+      {
+        const temp_content_data = {};
+        temp_content_data.type = 'img';
+        temp_content_data.content = `\/images\/${i}${i}${i}.jpg`;
+        temp_content_data.option = {};
+        init_content_data_list.push(temp_content_data);
+      }
+
       let temp_content_data = {};
-      temp_content_data.type = 'img';
-      temp_content_data.content = `\/images\/111.jpg`;
-      temp_content_data.option = {};
-      init_content_data_list.push(temp_content_data);
-      
-      temp_content_data = {};
       temp_content_data.type = 'text';
       temp_content_data.content = `이번엔 기필고 승리하리라!!`;
       temp_content_data.option = {'color':'white', 'background':'darkgray', 'fontSize':'28px'};
-      init_content_data_list.push(temp_content_data);
-
-      temp_content_data = {};
-      temp_content_data.type = 'img';
-      temp_content_data.content = `\/images\/222.jpg`;
-      temp_content_data.option = {};
       init_content_data_list.push(temp_content_data);
 
       temp_content_data = {};
@@ -97,7 +98,12 @@ class SwipeCard extends ComponentABS{
       temp_content_data.option = {'color':'white', 'background':'darkolivegreen','fontSize':'22px'};
       init_content_data_list.push(temp_content_data);
 
-      return init_content_data_list;
+      return this._shuffle(init_content_data_list);
+  }
+
+  _shuffle(array) { 
+    array.sort(() => Math.random() - 0.5); 
+    return array;
   }
 
   _make_img_element(content)
