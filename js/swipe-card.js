@@ -77,7 +77,7 @@ class SwipeCard extends ComponentABS{
       const init_content_data_list = [];
 
       //random image
-      for(let i = 1; i<7; i++)
+      for(let i = 0; i<=9; i++)
       {
         const temp_content_data = {};
         temp_content_data.type = 'img';
@@ -95,7 +95,7 @@ class SwipeCard extends ComponentABS{
       temp_content_data = {};
       temp_content_data.type = 'text';
       temp_content_data.content = `장수는 나가서 이름을 떨치고 정승은 앉아서 이름을 알린다.`;
-      temp_content_data.option = {'color':'white', 'background':'darkolivegreen','fontSize':'22px'};
+      temp_content_data.option = {'color':'#bee99f', 'background':'darkolivegreen','fontSize':'22px'};
       init_content_data_list.push(temp_content_data);
 
       return this._shuffle(init_content_data_list);
@@ -123,6 +123,7 @@ class SwipeCard extends ComponentABS{
     content_box.classList.add('content-box');
     content_box.style.background = content.option.background;
     content_box.style.fontSize = content.option.fontSize;
+    content_box.style.color = content.option.color;
     content_box.style.display = 'flex';
     content_box.style.alignItems = 'center';
     content_box.style.justifyContent = 'center';
@@ -131,7 +132,7 @@ class SwipeCard extends ComponentABS{
     const text = document.createElement('p');
     text.innerText = content.content;
     text.style.margin = '24px 12px';
-    text.style.color = content.option.color;
+    
     
     content_box.appendChild(text);
 
