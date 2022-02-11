@@ -4,6 +4,10 @@
 - 모바일 화면으로 확인해주세요.
 
 ## media_article
+- media_article
+    - not yet!!
+    - 시간을 체크해서 제거되는 기능(자동 폭파)
+    - attirbute : pop(true, false), pop_time(end time);
 - swip-card.js : '\<swip-card> \</swip-card>' or instance of SwipeCard();
     - touch event for Only Mobile
     - Image list swipe
