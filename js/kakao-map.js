@@ -39,7 +39,7 @@ class KakaoMap extends ComponentABS{
   }
   
   attributeChangedCallback(name, oldValue, newValue) {
-      console.log('Swipe Card element attributes changed.');
+      console.log('Kako Map element attributes changed.');
       if(name == 'draggable') this.map_data.config.draggable = newValue;
       else if(name == 'lat') this.map_data.latlng.lat = newValue;
       else if(name == 'lng') this.map_data.latlng.lng = newValue;

@@ -8,6 +8,46 @@
   <style>
       html, body{ margin: 0 0 30px 0; }
 
+      
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>SWIPE!</h1>
+
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+    <media-article></media-article>
+
+  </div>
+
+  <template id = "media_article">
+    <style>
       article.media-article{
         display: flex;
         flex-direction: column;
@@ -55,11 +95,37 @@
         color:green;
       }
       .title-tail > span:nth-child(1){font-size: 36px;}
-  </style>
-</head>
-<body>
-  <div>
-    <h1>SWIPE!</h1>
+      button.location-button {
+        background: url( "/images/location.svg" ) no-repeat;
+        border: none;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+      }
+      .disappear {
+        animation: fade-out 1s;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fade-out {
+        from {
+          opacity: 1;
+
+        }
+        to {
+          opacity: 0;
+        }
+      }
+    </style>
     <article class="media-article">
       <swipe-card></swipe-card>
       <details class="info-area">
@@ -70,7 +136,7 @@
             <span class="sub-title">Sub title</span>
           </div>
           <div class="title-tail">
-            <span class="material-icons">location_on</span>
+            <button class="location-button"></span>
           </div>
         </summary>
         <article class="info-body">
@@ -78,29 +144,7 @@
         </article>
       </details>      
     </article>
-
-
-    <article class="media-article">
-      <swipe-card></swipe-card>
-      <details class="info-area">
-        <summary class="info-title">
-          <img class="title-img" src="/images/666.jpg" />
-          <div class="title-text">
-            <span class="master-title">Master title</span>
-            <span class="sub-title">Sub title</span>
-          </div>
-          <div class="title-tail">
-            <span class="material-icons">location_on</span>
-          </div>
-        </summary>
-        <article class="info-body">
-          <kakao-map draggable="true" lat="35.118196", lng="129.105920" ></kakao-map>        
-        </article>
-      </details>      
-    </article>
-
-  
-  </div>
+  </template>
 
   <template id="swipe_card">
     <style>
@@ -156,6 +200,7 @@
 </script>
 
 <script src="/js/component-abs.js"></script>
+<script src="/js/media-article.js"></script>
 <script src="/js/swipe-card.js"></script>
 <script src="/js/kakao-map.js"></script>
 </body>
