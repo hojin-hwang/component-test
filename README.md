@@ -4,10 +4,9 @@
 - 모바일 화면으로 확인해주세요.
 
 ## media_article
-- media_article
-    - not yet!!
-    - 시간을 체크해서 제거되는 기능(자동 폭파)
-    - attirbute : pop(true, false), pop_time(end time);
+- media-article.js
+    - 초기 데이터에 duration 값을 주어  제거되는 기능(자동 폭파)
+
 - swip-card.js : '\<swip-card> \</swip-card>' or instance of SwipeCard();
     - touch event for Only Mobile
     - Image list swipe
@@ -19,16 +18,23 @@
         - config.json file 내용에 kakaoData='{"key":"카카오 API Key 값"}' 을 쓰고 저장한다.
         - parameter
         ```json
-          { 
+        { 
             "latlng" : {"lat":"33.450701", "lng":"126.570667"}, //위도 경도
             "config" : {
                 "draggable": false, //지도크기 변경, 이동 가능여부
                 "level": 2 //지도 확대 (낮을수록 자세히..)
             },
             "use_marker":true, //마커표시 여부
-          }
+        }
         ```
         - attribute : draggable, lat, lng
             ```html
                 <kakao-map draggable="true" lat="35.118196", lng="129.105920" ></kakao-map>
-            ```
+                ```
+## make multi card
+- image-preview.js
+    - 파일 이미지를 로드하면 미리보기
+- text-preview.js
+    - 글을 쓰면 글 길이에 따라서 글씨 크기가 조정
+    - 글 배치 기능(일반, 왼쪽, 중앙 정렬)      
+    - 배경(색) 변경          
