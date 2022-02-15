@@ -71,7 +71,7 @@ class ImagePreview extends ComponentABS{
               this.shadowRoot.querySelector('.add-image-zone').style.borderRadius = 'unset';
               this.shadowRoot.querySelector('.image-upload-info > p').style.display = 'none';
               this._after_preview();
-              this.post_message('message_load_image_done');
+              this.post_message('message_load_content_done');
             };
             image.onerror = function() {
                 console.log("error");

@@ -5,6 +5,7 @@ class MakeMultiCard extends ComponentABS{
     this.card_map = new Map();  
     this.current_card_index = 0;
     this.MAX_CARD_SIZE = 5;
+    this.selected_content = 'image';
     
   }
   static get observedAttributes() {return ['any_attribute']; }
@@ -52,7 +53,7 @@ class MakeMultiCard extends ComponentABS{
       //if(event.origin !== window_url) return;
       if(event.data?.msg) 
       {
-          if(event.data.msg === `message_load_image_done`) 
+          if(event.data.msg === `message_load_content_done`) 
           {
             this.card_map.get(this.current_card_index).setContent = true;
             this._set_enable_next_button();
@@ -85,7 +86,30 @@ class MakeMultiCard extends ComponentABS{
       this._append_article(image_preview);
       this.card_map.set(0, {"content_box" : image_preview}); 
 
+      this.shadowRoot.querySelector('select').addEventListener('change', e => this._set_content(e));
+
   }
+    _set_content = e =>{
+       this.selected_content = (this.shadowRoot.querySelector('select').value);
+       if(this.selected_content === 'image')
+       {
+            const image_preview = new ImagePreview();
+            this._remove_article(this.card_map.get(this.current_card_index).content_box);
+            this._append_article(image_preview);
+            this.card_map.get(this.current_card_index).content_box = image_preview;
+
+            this._set_next_button();
+       }
+       if(this.selected_content === 'text')
+       {
+            const text_preview = new TextPreview();
+            this._remove_article(this.card_map.get(this.current_card_index).content_box);
+            this._append_article(text_preview);
+            this.card_map.get(this.current_card_index).content_box = text_preview;
+
+            this._set_next_button();
+       }
+    }
 
     _make_next_card(current_card_index)
     {
@@ -135,6 +159,10 @@ class MakeMultiCard extends ComponentABS{
     _append_article(content_box)
     {
         this.shadowRoot.querySelector('article').appendChild(content_box);
+    }
+    _remove_article(content_box)
+    {
+        this.shadowRoot.querySelector('article').removeChild(content_box);
     }
 
     _delete_card(index)
