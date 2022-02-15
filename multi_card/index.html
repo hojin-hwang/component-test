@@ -6,26 +6,34 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <title>Slider for mobile</title>
   <style>
-      html, body{ margin: 0 0 30px 0; }
-      section > header, footer {min-height:40px;padding:12px;}
-      section > article {height: 100%;}
+      html, body{ margin: 0; }
+      
       
   </style>
 </head>
 <body>
+  <make-multi-card></make-multi-card>
 
+
+
+<template id="make_multi_card">
+  <style>
+    section > header, footer {min-height:40px;padding:12px;}
+    section > article {height: 100%;}
+  </style>
   <section style="height:100vh; display: flex; flex-direction: column; justify-content: space-between;">
-    <header><button class="command-remove-card">Remove</button></header>
+    <header>
+      <button class="command-remove-card" disabled="true">Remove</button>
+    </header>
     <article>
-      <image-preview placeholder="이미지를 업로드 해주세요"></image-preview>
+      
     </article>
     <footer>
-      <button class="command-previous-card">Previous</button>
-      <button class="command-next-card">Next</button>
+      <button class="command-previous-card" disabled="true">Previous</button>
+      <button class="command-next-card" disabled="true">Next</button>
     </footer>
   </section>
-
-  <!--  -->
+</template>
 
   
   <template id="image_preview">
@@ -60,80 +68,15 @@
   </template>
 
 <script>
-const card = new Map();  
-let current_card_index = 0;
-document.addEventListener('DOMContentLoaded', () => 
-{
-  document.addEventListener('click', (e) =>
-	{
-		e.composedPath().find((node) =>
-		{
-            if (!node.className || !node.className?.match(/command/)) return false;
-            if (node.className.match(/command-next-card/))
-            {
-              check_next_card();
-              current_card_index += 1;
-              if(card.get(current_card_index))
-              {
-                //move current card
-                //console.log(card.get(current_card_index));
-              }
-              else make_next_card();
-              return ;
-            }
 
-            if (node.className.match(/command-previous-card/))
-            {
-              if(current_card_index >= 2) 
-              {
-                //move current card
-                current_card_index -= 1;
-                console.log(card.get(current_card_index));
-              }
-              return ;
-            }
 
-            if (node.className.match(/command-remove-card/))
-            {
-              
-              if(current_card_index >= 1 )
-              {
-                card.delete(current_card_index);
-              }
-              return ;
-            }
-    });
-  });
 
-});
-
-function make_next_card()
-{
-  const new_card_no = current_card_index;
-  card.set(new_card_no, {"no" : new_card_no});
-  console.log(card.get(new_card_no));
-  current_card_index = new_card_no;
   
-} 
-
-function check_next_card()
-{
-  for(let i=1; i< card.size; i++)
-  {
-      if(card.has(i))
-      {
-        console.log(card.get(i));
-      }
-      else
-      {
-        console.log((i));
-      }
-  }
-}
 </script>
 
 <script src="/js/component-abs.js"></script>
 <script src="/js/image-preview.js"></script>
+<script src="/js/make-multi-card.js"></script>
 </body>
 
 </html>

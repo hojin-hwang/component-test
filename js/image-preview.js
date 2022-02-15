@@ -3,7 +3,7 @@ class ImagePreview extends ComponentABS{
   {
       super();    
   }
-  static get observedAttributes() {return ['any_attribute']; }
+  static get observedAttributes() {return ['display']; }
 
   handleClick(e) {
       e.composedPath().find((node) => 
@@ -38,8 +38,8 @@ class ImagePreview extends ComponentABS{
   }
   
   attributeChangedCallback(name, oldValue, newValue) {
-      console.log('image Preview element attributes changed.'); 
-      if(name == 'placeholder') this._setInfoText(newValue);
+      // console.log('image Preview element attributes changed.'); 
+      if(name === 'display') this._set_style(newValue);
   }
 
   _render()
@@ -49,7 +49,7 @@ class ImagePreview extends ComponentABS{
       shadowRoot.appendChild(template.content.cloneNode(true));
       
       const infoText = this.getAttribute('placeholder');
-      this._setInfoText(infoText);
+      if(!infoText) {this._setInfoText('이미지를 업로드 해주세요');}
       
       this.shadowRoot.querySelector('input#upload_image').addEventListener('change', e => this._load_image(e));
   }
@@ -71,6 +71,7 @@ class ImagePreview extends ComponentABS{
               this.shadowRoot.querySelector('.add-image-zone').style.borderRadius = 'unset';
               this.shadowRoot.querySelector('.image-upload-info > p').style.display = 'none';
               this._after_preview();
+              this.post_message('message_load_image_done');
             };
             image.onerror = function() {
                 console.log("error");
@@ -89,7 +90,10 @@ class ImagePreview extends ComponentABS{
     //..do something after preview
     // form action, save image ..
   }
-
+  _set_style(newValue)
+  {
+    this.style.display = newValue;
+  }
 }
 customElements.define('image-preview', ImagePreview);
 
