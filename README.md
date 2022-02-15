@@ -32,6 +32,10 @@
                 <kakao-map draggable="true" lat="35.118196", lng="129.105920" ></kakao-map>
                 ```
 ## make multi card
+- make-multi-card.js
+    - contents card 만들기
+    - 컨텐츠가 있을때 다음 카드 만들 수 있음.
+    - 컨텐츠 카드 갯수 설정
 - image-preview.js
     - 파일 이미지를 로드하면 미리보기
 - text-preview.js
