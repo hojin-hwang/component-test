@@ -14,27 +14,7 @@
   <make-multi-card></make-multi-card>
 
 
-<template id="text_preview">
-  <style>
-    section{padding:12px;}
-    textarea{width:98%;font-size:18px}
-    textarea:focus{outline: none;}
-    .text-preview{min-height:300px; max-height:300px; background: antiquewhite;align-items: center;
-    justify-content: center;
-    display: flex;
-    padding: 0px 24px;
-    text-align: center;
-    }
-    p{margin:0;}
-  </style>
-  <section class="text-article">
-    <textarea rows="3" class="event-text"></textarea>
-    <div class="theme-box"></div>
-    <div class="text-preview">
-      <p></p>
-    </div>
-  </section>
-</template>
+
 
 <template id="make_multi_card">
   <style>
@@ -94,6 +74,29 @@
     </div>
   </template>
 
+  <template id="text_preview">
+    <style>
+      section{padding:12px;}
+      textarea{width:98%;font-size:18px}
+      textarea:focus{outline: none;}
+      .text-preview{min-height:300px; max-height:300px; align-items: center;
+      justify-content: center;
+      display: flex;
+      padding: 0px 24px;
+      text-align: center;
+      }
+      .theme-box{display: flex; gap:8px;}
+      p{margin:0;}
+    </style>
+    <section class="text-article">
+      <textarea rows="3" class="event-text"></textarea>
+      <div class="theme-box"></div>
+      <div class="text-preview">
+        <p></p>
+      </div>
+    </section>
+  </template>
+
 <script>
 
 
@@ -105,6 +108,7 @@
 <script src="/js/image-preview.js"></script>
 <script src="/js/text-preview.js"></script>
 <script src="/js/make-multi-card.js"></script>
+<script src="/js/custom-div.js"></script>
 </body>
 
 </html>

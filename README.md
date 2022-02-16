@@ -40,5 +40,7 @@
     - 파일 이미지를 로드하면 미리보기
 - text-preview.js
     - 글을 쓰면 글 길이에 따라서 글씨 크기가 조정
-    - 글 배치 기능(일반, 왼쪽, 중앙 정렬)      
-    - 배경(색) 변경          
+    - Style 변경   
+        - _get_custom_div_configs() 함수내에 attribute 객체에 스타일 추가하여 사용
+        - div_attribute.color = 'white';
+        - div_attribute.background = `linear-gradient(90deg, rgb(155, 175, 217) 0%, rgb(16, 55, 131) 100%)`;       

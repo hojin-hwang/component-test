@@ -82,9 +82,10 @@ class MakeMultiCard extends ComponentABS{
       const shadowRoot = this.attachShadow({mode: 'open'});
       shadowRoot.appendChild(template.content.cloneNode(true));
       
-      const image_preview = new ImagePreview();
-      this._append_article(image_preview);
-      this.card_map.set(0, {"content_box" : image_preview}); 
+      
+      const content_preview = (this.selected_content === 'image')? new ImagePreview() : new TextPreview();
+      this._append_article(content_preview);
+      this.card_map.set(0, {"content_box" : content_preview}); 
 
       this.shadowRoot.querySelector('select').addEventListener('change', e => this._set_content(e));
 
@@ -116,9 +117,10 @@ class MakeMultiCard extends ComponentABS{
         if(!this.card_map.has(current_card_index))
         {
             const new_card_no = current_card_index;
-            const image_preview = new ImagePreview();
-            this.card_map.set(new_card_no, {"content_box" : image_preview});  
-            this._append_article(image_preview);
+            const content_preview = (this.selected_content === 'image')? new ImagePreview() : new TextPreview();
+         
+            this.card_map.set(new_card_no, {"content_box" : content_preview});  
+            this._append_article(content_preview);
         }
     } 
 
