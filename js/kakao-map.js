@@ -13,8 +13,8 @@ class KakaoMap extends ComponentABS{
   handleClick(e) {
       e.composedPath().find((node) => 
       {
-            return;
-            //if (!node.className || !node.className.match(/command/)) return false;
+            //return;
+            if (!node.className || !node.className.match(/command/)) return false;
       });
   }
   onMessage(event){

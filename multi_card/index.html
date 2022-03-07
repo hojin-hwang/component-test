@@ -26,6 +26,7 @@
   </style>
   <section>
     <header>
+      <a type="button" href="http://localhost:5500/index.html">home</a>
       <button class="command-remove-card" disabled="true">Remove</button>
     </header>
     <select>
@@ -38,6 +39,7 @@
     <footer>
       <button class="command-previous-card" disabled="true">Previous</button>
       <button class="command-next-card" disabled="true">Next</button>
+      <button class="command-get-content" >Get Info</button>
     </footer>
   </section>
 </template>
@@ -65,7 +67,9 @@
         }
           input[type=file]{display: none;}
     </style>
-    <input type="file" id="upload_image" name="image" accept="image/*">
+    <form>
+      <input type="file" id="upload_image" name="image" accept="image/*">
+    </form>
     <div class="add-image-zone" >
         <div class="image-upload-info">
             <img for="upload_image" class="command-find-file" src="https://dev-wallet.gobt.io/skin/ko/assets/images/btn_plus.svg">
@@ -85,12 +89,29 @@
       padding: 0px 24px;
       text-align: center;
       }
+      .row-box{display: flex; justify-content: space-between;}
       .theme-box{display: flex; gap:8px;}
-      p{margin:0;}
+      button.btn-align{width:36px; height:36px; background-color:white; border:none; background-size: cover;}
+      button.btn-left{background-image: url(/images/align-left.svg) }
+      button.btn-center{background-image: url(/images/align-center.svg)  }
+      button.btn-right{background-image: url(/images/align-right.svg)  }
+      button.btn-align.active{border:1px solid #C8C8C8;}
+      p{margin:0;width: 100%;word-break:break-all;}
+
     </style>
     <section class="text-article">
-      <textarea rows="3" class="event-text"></textarea>
-      <div class="theme-box"></div>
+      <form>
+        <textarea rows="3" class="event-text" name="event_text"></textarea>
+      </form>
+      <div class="row-box">
+        <div class="theme-box"></div>
+        <div class="align-box">
+          <button class="command-select-align command-text-align-left  btn-align btn-left"></button>
+          <button class="command-select-align command-text-align-center  btn-align btn-center active"></button>
+          <button class="command-select-align command-text-align-right  btn-align btn-right"></button>
+        </div>
+      </div>
+      
       <div class="text-preview">
         <p></p>
       </div>

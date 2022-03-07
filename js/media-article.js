@@ -1,14 +1,13 @@
-class MedaiArticle extends ComponentABS{
+class MediaArticle extends ComponentABS
+{
   constructor(data = null)
   {
       super();
-
-      if(data)
-      this.data = data;
+      if(data) this.data = this._get_initial_data();
       else this.data =  this._get_initial_data();
   }
 
-  static get observedAttributes() {return ['any_attribute']; }
+  static get observedAttributes() {return ['info']; }
 
   handleClick(e) {
       e.composedPath().find((node) => 
@@ -46,9 +45,9 @@ class MedaiArticle extends ComponentABS{
     const template = document.querySelector('template#media_article');
     const shadowRoot = this.attachShadow({mode: 'open'});
     shadowRoot.appendChild(template.content.cloneNode(true));
-    setTimeout(() => {
-        this._hide_animation();
-    }, this.data.duration);
+    // setTimeout(() => {
+    //     this._hide_animation();
+    // }, this.data.duration);
   }
 
   _get_initial_data()
@@ -68,7 +67,7 @@ class MedaiArticle extends ComponentABS{
     }, 1000);
   }
 }
-customElements.define('media-article', MedaiArticle);
+customElements.define('media-article', MediaArticle);
 
 
 

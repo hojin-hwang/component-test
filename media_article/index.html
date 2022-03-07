@@ -210,7 +210,6 @@
   // kakaoData='{"key":"kakao app key"}'
   //kakao key값은 https://apis.map.kakao.com/web/guide/ 참고하여 만들기
 </script>
-
 <script>
   const kakao_data = JSON.parse(kakaoData); 
   document.write("<script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey="+kakao_data.key+"&libraries=drawing,services'><\/script>");
@@ -227,6 +226,7 @@
   //   array.sort(() => Math.random() - 0.5); 
   //   return array[0];
   // }		
+
   document.addEventListener('click', (e) =>
 	{
 		e.composedPath().find((node) =>

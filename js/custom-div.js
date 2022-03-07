@@ -1,3 +1,6 @@
+/**
+ * 배경값을 주어서 DIV의 높이, 폭, 글자색, 배경등을 조정할 수 있다.
+ */
 class CustomDiv extends ComponentABS{
   constructor(attr = null, p_message_prefix = null)
   {
@@ -23,10 +26,7 @@ class CustomDiv extends ComponentABS{
       //if(event.origin !== window_url) return;
       if(event.data?.msg) 
       {
-          // if(event.data.msg === `${this.message_prefix}_show_user_name_card`) 
-          // {
-          //     this._render(event.data.data);
-          // }
+
       }
   }
 
@@ -53,7 +53,6 @@ class CustomDiv extends ComponentABS{
       const shadowRoot = this.attachShadow({mode: 'open'});
       shadowRoot.appendChild(div);  
       this._set_style(this.attribute);
-
   }
 
   _set_style(attrs)
@@ -77,11 +76,3 @@ class CustomDiv extends ComponentABS{
 
 }
 customElements.define('custom-div', CustomDiv);
-
-
-
-
-
- 
-
-

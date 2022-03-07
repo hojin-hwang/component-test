@@ -46,6 +46,27 @@ class MakeMultiCard extends ComponentABS{
               }
               return ;
             }
+
+            if (node.className.match(/command-get-content/))
+            {
+              
+              const current_content = (this.card_map.get(this.current_card_index).content_box);
+              const form = (current_content.shadowRoot.querySelector('form'));
+              const formData = new FormData(form);
+              
+              if(this.selected_content === 'image') 
+              {
+                console.log(formData.get('image')); 
+              }
+              else 
+              {
+                  const css_text = current_content.shadowRoot.querySelector('.text-preview').style.cssText;
+                  formData.append('style', css_text);
+                  console.log(formData.get('style')); 
+              }
+              return ;
+            }
+
       });
   }
   onMessage(event){
@@ -56,8 +77,14 @@ class MakeMultiCard extends ComponentABS{
           if(event.data.msg === `message_load_content_done`) 
           {
             this.card_map.get(this.current_card_index).setContent = true;
-            this._set_enable_next_button();
+            this._set_disable_next_button(false);
             this._check_button_condition();
+
+          }
+          if(event.data.msg === `message_load_content_yet`) 
+          {
+            this.card_map.get(this.current_card_index).setContent = false;
+            this._set_disable_next_button(true);
 
           }
       }
@@ -85,7 +112,7 @@ class MakeMultiCard extends ComponentABS{
       
       const content_preview = (this.selected_content === 'image')? new ImagePreview() : new TextPreview();
       this._append_article(content_preview);
-      this.card_map.set(0, {"content_box" : content_preview}); 
+      this.card_map.set(0, {"content_box" : content_preview, "content_type": this.selected_content}); 
 
       this.shadowRoot.querySelector('select').addEventListener('change', e => this._set_content(e));
 
@@ -191,9 +218,9 @@ class MakeMultiCard extends ComponentABS{
         this._set_button_by_zeor_index(); 
     }
 
-    _set_enable_next_button()
+    _set_disable_next_button(check)
     {
-        this.shadowRoot.querySelector('.command-next-card').disabled = false;
+        this.shadowRoot.querySelector('.command-next-card').disabled = check;
     }
     
     _set_next_button()

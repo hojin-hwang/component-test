@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>Toggle Button</title>
+  <style>
+   .container{margin:auto;    margin: auto;
+    height: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;}
+      
+  </style>
+</head>
+<body>
+    <h1><a href="http://localhost:5500/index.html">Home!</a></h1>
+    <div class="container">
+        
+        <toggle-button  active=true ></toggle-button>
+        
+    </div>
+
+    <template id="toggle_button">
+        <style>
+            .toggle-button-container
+            {
+                display: flex;
+                gap: 6px;
+                padding: 12px;
+                align-items: center;
+                border: 1px solid #eee;
+            }
+            .toggle-button.active
+            {
+                border: 2px solid green;
+            }
+        </style>
+        
+        <div class="toggle-button toggle-button-container command-toggle-button">
+            <img src="/images/location.svg"><span>toggle button</span>
+        </div>
+    </template>
+
+<script src="/js/component-abs.js"></script>
+<script src="/js/toggle-button.js"></script>
+<script>
+    
+</script>
+</body>
+</html>
